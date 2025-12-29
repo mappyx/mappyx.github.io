@@ -2,109 +2,150 @@
 layout: default
 ---
 
-<section id="hero" class="hero">
-  <div class="container hero-grid">
-    <div class="hero-text reveal">
-      <span class="hero-tag">Desarrollador Full Stack & Mobile</span>
-      <h1>Hola, soy <br> {{ site.name }}</h1>
-      <p>Transformo ideas complejas en soluciones digitales elegantes y escalables. Con más de 6 años de experiencia
-        impulsando el éxito de productos tecnológicos.</p>
-      <div class="hero-actions">
-        <a href="#experience" class="btn btn-primary">Ver mi trabajo</a>
-        <a href="#about" class="btn btn-secondary">Sobre mí</a>
+<div class="container">
+  <!-- HERO SECTION -->
+  <section id="hero" class="hero">
+    <div class="hero-content reveal">
+      <div class="timeline-badge badge-blue">Socio Tecnológico / Full Stack</div>
+      <h1>Potenciando el <span>Éxito Digital</span> con Código de Élite.</h1>
+      <p>Soy Rafael Paez Villanueva, un desarrollador de software con más de 6 años de experiencia creando soluciones
+        escalables y seguras. Especialista en arquitecturas robustas y experiencias móviles excepcionales.</p>
+      <div class="hero-btns">
+        <a href="#experience" class="btn btn-primary">Ver Experiencia</a>
+        <a href="#skills" class="btn btn-light" style="margin-left: 1rem;">Habilidades</a>
       </div>
     </div>
     <div class="hero-image reveal">
-      <img src="{{ site.avatar }}" alt="Rafael Paez Villanueva">
+      <div class="hero-image-container">
+        <img src="{{ site.avatar }}" alt="Rafael Paez Villanueva">
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="about" class="about">
-  <div class="container text-center">
-    <div class="section-header reveal">
-      <h2>Sobre mí</h2>
-      <div class="section-line"></div>
+  <!-- STATISTICS / OVERVIEW WIDGETS -->
+  <section class="overview">
+    <div class="skills-grid">
+      <div class="card card-purple reveal">
+        <h4 style="opacity: 0.8; margin-bottom: 0.5rem;">Años de Experiencia</h4>
+        <h2 style="font-size: 2.5rem;">+6</h2>
+        <div style="margin-top: 1rem; font-size: 0.9rem;">Trayectoria profesional sólida en Venezuela.</div>
+      </div>
+      <div class="card card-blue reveal">
+        <h4 style="opacity: 0.8; margin-bottom: 0.5rem;">Tecnologías Core</h4>
+        <h2 style="font-size: 2.5rem;">Full Stack</h2>
+        <div style="margin-top: 1rem; font-size: 0.9rem;">PHP, Python, Vue & Flutter expert.</div>
+      </div>
+      <div class="card reveal" style="background: var(--berry-success); color: white; border: none;">
+        <h4 style="opacity: 0.8; margin-bottom: 0.5rem;">Proyectos Críticos</h4>
+        <h2 style="font-size: 2.5rem;">100%</h2>
+        <div style="margin-top: 1rem; font-size: 0.9rem;">Disponibilidad y seguridad garantizada.</div>
+      </div>
     </div>
-    <div class="glass-card reveal">
-      <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">Soy un apasionado de la tecnología radicado en
-        Venezuela. Mi enfoque principal es el desarrollo robusto de backend y experiencias móviles fluidas. He liderado
-        el mantenimiento de sistemas críticos y procesadores de pago, siempre buscando la excelencia técnica y el
-        impacto en el negocio.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="experience" class="experience">
-  <div class="container text-center">
-    <div class="section-header reveal">
-      <h2>Trayectoria Profesional</h2>
-      <div class="section-line"></div>
+  <!-- CAREER MILESTONES -->
+  <section id="experience">
+    <div class="section-title reveal">
+      <h2>Milestones de Carrera</h2>
+      <p>Una línea de tiempo de mi evolución profesional y técnica.</p>
     </div>
 
-    <div class="exp-grid">
-      <article class="glass-card reveal">
-        <div class="exp-header">
-          <div class="exp-title">
-            <h3>District Software S.A.</h3>
-            <p>Desarrollador de Software / Full Stack</p>
+    <div class="timeline">
+      <!-- District Software -->
+      <div class="timeline-item reveal">
+        <div class="timeline-date">2018 - Presente</div>
+        <div class="card timeline-content">
+          <span class="timeline-badge badge-success">Activo</span>
+          <h3>District Software S.A.</h3>
+          <p style="font-weight: 600; color: var(--text-secondary); margin-bottom: 1rem;">Software Developer / Full
+            Stack</p>
+          <p>Lidero el mantenimiento y soporte evolutivo del procesador de pagos <strong>Cocoa</strong>. Implementación
+            de nuevas funcionalidades, optimización de búsquedas con Solr y securización de transacciones críticas.</p>
+          <div style="margin-top: 1.5rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <span class="timeline-badge badge-blue">Laravel</span>
+            <span class="timeline-badge badge-blue">Solr</span>
+            <span class="timeline-badge badge-blue">Vue.js</span>
           </div>
-          <span class="exp-date">2018 - Presente</span>
         </div>
-        <p>Responsable del mantenimiento y soporte del innovador procesador de pagos <strong>Cocoa</strong>. Experto en
-          optimización con Laravel, Solr y JQuery, garantizando transacciones seguras y eficientes para miles de
-          usuarios.</p>
-      </article>
+      </div>
 
-      <article class="glass-card reveal">
-        <div class="exp-header">
-          <div class="exp-title">
-            <h3>CANTV</h3>
-            <p>Consultor de Coordinación de Ciclo de Ingresos</p>
-          </div>
-          <span class="exp-date">2018</span>
+      <!-- CANTV -->
+      <div class="timeline-item reveal">
+        <div class="timeline-date">2018</div>
+        <div class="card timeline-content">
+          <span class="timeline-badge badge-blue">Consultoría</span>
+          <h3>CANTV</h3>
+          <p style="font-weight: 600; color: var(--text-secondary); margin-bottom: 1rem;">Consultor Técnico</p>
+          <p>Coordinación del ciclo de ingresos para sistemas de facturación. Mantenimiento del portal
+            <strong>pac.com.ve</strong> y administración de servidores en entornos CentOS.</p>
         </div>
-        <p>Gestión y mantenimiento de portales públicos de alto tráfico como <strong>pac.com.ve</strong>. Especialista
-          en administración de entornos críticos sobre CentOS Linux.</p>
-      </article>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="skills" class="skills">
-  <div class="container text-center">
-    <div class="section-header reveal">
-      <h2>Habilidades Core</h2>
-      <div class="section-line"></div>
+  <!-- SKILLS MATRIX -->
+  <section id="skills">
+    <div class="section-title reveal">
+      <h2>Matriz de Habilidades</h2>
+      <p>Stack tecnológico dominado y herramientas de productividad.</p>
     </div>
 
     <div class="skills-grid">
-      <div class="skill-box reveal">
-        <i class="fas fa-server"></i>
-        <h3>Backend</h3>
-        <p>PHP (Laravel, SlimPhp), Python (FastAPI), Java. Maestría en arquitectura SQL.</p>
+      <div class="card skill-card reveal">
+        <div class="skill-icon" style="background: #ede7f6; color: #5e35b1;">
+          <i class="fas fa-server"></i>
+        </div>
+        <div>
+          <h4>Backend</h4>
+          <p style="font-size: 0.85rem; color: var(--text-hint);">PHP (Laravel, Lumen), Python (FastAPI), Java.</p>
+        </div>
       </div>
-      <div class="skill-box reveal">
-        <i class="fas fa-mobile-alt"></i>
-        <h3>Mobile & UI</h3>
-        <p>Desarrollo Cross-platform con Flutter. Frontend moderno con Vue.js y JavaScript.</p>
-      </div>
-      <div class="skill-box reveal">
-        <i class="fas fa-tools"></i>
-        <h3>Tools</h3>
-        <p>Git Flow, Metodologías Scrum, Solr Search, y Administración de Servidores Linux.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section class="cta-section">
-  <div class="container text-center reveal">
-    <div class="glass-card"
-      style="background: linear-gradient(135deg, var(--primary), var(--secondary)); border: none;">
-      <h2 style="margin-bottom: 2rem;">¿Listo para llevar tu proyecto al siguiente nivel?</h2>
-      <a href="mailto:rafael.paez.v@gmail.com" class="btn btn-primary"
-        style="background: white; color: var(--primary); border: none;">Hablemos ahora</a>
+      <div class="card skill-card reveal">
+        <div class="skill-icon" style="background: #e3f2fd; color: #2196f3;">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <div>
+          <h4>Frontend & Mobile</h4>
+          <p style="font-size: 0.85rem; color: var(--text-hint);">Flutter, Vue.js, JavaScript (ES6+), CSS Grid/Flexbox.
+          </p>
+        </div>
+      </div>
+
+      <div class="card skill-card reveal">
+        <div class="skill-icon" style="background: #fff8e1; color: #ffab00;">
+          <i class="fas fa-database"></i>
+        </div>
+        <div>
+          <h4>Datos & Infra</h4>
+          <p style="font-size: 0.85rem; color: var(--text-hint);">MySQL, PostgreSQL, Solr Search, Linux Admin.</p>
+        </div>
+      </div>
+
+      <div class="card skill-card reveal">
+        <div class="skill-icon" style="background: #f1f8e9; color: #689f38;">
+          <i class="fas fa-users"></i>
+        </div>
+        <div>
+          <h4>Metodologías</h4>
+          <p style="font-size: 0.85rem; color: var(--text-hint);">Scrum, Git Flow, Code Review, MVC Architecture.</p>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section class="reveal">
+    <div class="card card-purple" style="text-align: center; padding: 4rem 2rem;">
+      <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">¿Tienes un desafío técnico?</h2>
+      <p
+        style="font-size: 1.125rem; opacity: 0.9; margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+        Estoy disponible para consultorías o nuevos proyectos de alto impacto. ¡Hablemos de cómo puedo ayudarte!
+      </p>
+      <a href="mailto:rafael.paez.v@gmail.com" class="btn"
+        style="background: white; color: var(--berry-purple-main); padding: 12px 40px; font-size: 1rem; border-radius: 12px;">
+        Iniciar Conversación
+      </a>
+    </div>
+  </section>
+</div>
