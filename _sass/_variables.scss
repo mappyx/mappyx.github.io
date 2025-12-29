@@ -4,19 +4,22 @@
 //
 
 // Colors
-$blue: #4183C4;
+$primary-purple: #6C63FF;
+$accent-teal: #26C6DA;
+$accent-orange: #FF7043;
+$blue: $accent-teal;
 
 // Grays
-$black: #000;
-$darkerGray: #222;
-$darkGray: #333;
-$gray: #666;
-$lightGray: #eee;
+$black: #1A1A2E;
+$darkerGray: #33334d;
+$darkGray: #444466;
+$gray: #777799;
+$lightGray: #F4F7F6;
 $white: #fff;
 
 // Font stacks
-$helvetica: Helvetica, Arial, sans-serif;
-$helveticaNeue: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$helvetica: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+$helveticaNeue: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 $georgia: Georgia, serif;
 
 // Mobile breakpoints

@@ -1,7 +1,4 @@
----
----
-
-//
+--- --- //
 // IMPORTS
 //
 
@@ -18,19 +15,24 @@ html {
 }
 
 body {
-	background: $white;
+  background: $white;
   font: 18px/1.4 $helvetica;
   color: $darkGray;
 }
 
 .container {
   margin: 0 auto;
-  max-width: 740px;
-  padding: 0 10px;
+  max-width: 1000px;
+  padding: 0 20px;
   width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: $helveticaNeue;
   color: $darkerGray;
   font-weight: bold;
@@ -46,6 +48,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 30px;
+
   a {
     color: inherit;
   }
@@ -69,15 +72,19 @@ p {
 }
 
 a {
-  color: $blue;
+  color: $primary-purple;
   text-decoration: none;
-	cursor: pointer;
-  &:hover, &:active {
-    color: $blue;
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover,
+  &:active {
+    color: $accent-teal;
   }
 }
 
-ul, ol {
+ul,
+ol {
   margin: 15px 0;
   padding-left: 30px;
 }
@@ -90,19 +97,25 @@ ol {
   list-style-type: decimal;
 }
 
-ol ul, ul ol, ul ul, ol ol {
+ol ul,
+ul ol,
+ul ul,
+ol ol {
   margin: 0;
 }
 
-ul ul, ol ul {
+ul ul,
+ol ul {
   list-style-type: circle;
 }
 
-em, i {
+em,
+i {
   font-style: italic;
 }
 
-strong, b {
+strong,
+b {
   font-weight: bold;
 }
 
@@ -125,6 +138,7 @@ img {
   color: $black;
   background: $lightGray;
 }
+
 ::selection {
   color: $black;
   background: $lightGray;
@@ -134,12 +148,12 @@ img {
 // http://nicolasgallagher.com/micro-clearfix-hack/
 .clearfix:before,
 .clearfix:after {
-    content: " ";
-    display: table;
+  content: " ";
+  display: table;
 }
 
 .clearfix:after {
-    clear: both;
+  clear: both;
 }
 
 /*********************/
@@ -212,28 +226,198 @@ img {
 
 nav {
   float: right;
-  margin-top: 23px; // @TODO: Vertically middle align
+  margin-top: 15px;
   font-family: $helveticaNeue;
-  font-size: 18px;
+  font-size: 16px;
 
   @include mobile {
     float: none;
-    margin-top: 9px;
+    margin-top: 15px;
     display: block;
-    font-size: 16px;
+    font-size: 15px;
+    background: $white;
+    padding: 10px 0;
   }
 
   a {
-    margin-left: 20px;
+    margin-left: 25px;
     color: $darkGray;
     text-align: right;
-    font-weight: 300;
-    letter-spacing: 1px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 14px;
 
     @include mobile {
-      margin: 0 10px;
-      color: $blue;
+      margin: 0 15px;
+      color: $primary-purple;
     }
+
+    &:hover {
+      color: $primary-purple;
+    }
+  }
+}
+
+// Hero Section Styles
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 0;
+  gap: 40px;
+
+  @include mobile {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 40px 0;
+  }
+
+  .hero-content {
+    flex: 1;
+
+    h1 {
+      font-size: 48px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: $black;
+      font-weight: 800;
+
+      @include mobile {
+        font-size: 32px;
+      }
+    }
+
+    p {
+      font-size: 20px;
+      color: $darkGray;
+      margin-bottom: 30px;
+      max-width: 500px;
+
+      @include mobile {
+        font-size: 18px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+
+  .hero-image {
+    flex: 1;
+
+    img {
+      width: 100%;
+      height: auto;
+      max-width: 500px;
+    }
+  }
+}
+
+// CTA Button Styles
+.btn {
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+
+  &.btn-primary {
+    background: $primary-purple;
+    color: $white;
+
+    &:hover {
+      background: darken($primary-purple, 10%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba($primary-purple, 0.3);
+      color: $white;
+    }
+  }
+
+  &.btn-secondary {
+    border-color: $accent-teal;
+    color: $accent-teal;
+    margin-left: 15px;
+
+    &:hover {
+      background: $accent-teal;
+      color: $white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba($accent-teal, 0.3);
+    }
+
+    @include mobile {
+      margin-left: 0;
+      margin-top: 15px;
+    }
+  }
+}
+
+// Section Styles
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+
+  h2 {
+    font-size: 32px;
+    color: $black;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: $accent-teal;
+      border-radius: 2px;
+    }
+  }
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.card {
+  background: $white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba($black, 0.05);
+  transition: transform 0.3s ease;
+  border: 1px solid rgba($black, 0.05);
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  h3 {
+    margin-top: 0;
+    color: $primary-purple;
+    font-size: 22px;
+  }
+
+  .card-meta {
+    font-size: 14px;
+    color: $gray;
+    margin-bottom: 15px;
+    display: block;
+  }
+
+  p {
+    font-size: 16px;
+    color: $darkGray;
+    margin-bottom: 0;
   }
 }
 
@@ -241,12 +425,12 @@ nav {
 // .main
 //
 
-.posts > .post {
+.posts>.post {
   padding-bottom: 2em;
   border-bottom: 1px solid $lightGray;
 }
 
-.posts > .post:last-child {
+.posts>.post:last-child {
   padding-bottom: 1em;
   border-bottom: none;
 }
