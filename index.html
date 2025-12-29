@@ -2,71 +2,109 @@
 layout: default
 ---
 
-<section class="hero">
-  <div class="hero-content">
-    <h1>{{ site.name }}</h1>
-    <p>{{ site.description }}</p>
-    <div class="hero-btns">
-      <a href="mailto:rafael.paez.v@gmail.com" class="btn btn-primary">Contáctame</a>
-      <a href="/about" class="btn btn-secondary">Sobre mí</a>
+<section id="hero" class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text reveal">
+      <span class="hero-tag">Desarrollador Full Stack & Mobile</span>
+      <h1>Hola, soy <br> {{ site.name }}</h1>
+      <p>Transformo ideas complejas en soluciones digitales elegantes y escalables. Con más de 6 años de experiencia
+        impulsando el éxito de productos tecnológicos.</p>
+      <div class="hero-actions">
+        <a href="#experience" class="btn btn-primary">Ver mi trabajo</a>
+        <a href="#about" class="btn btn-secondary">Sobre mí</a>
+      </div>
     </div>
-  </div>
-  <div class="hero-image">
-    <img src="{{ site.avatar }}" alt="Desarrollador de Software">
+    <div class="hero-image reveal">
+      <img src="{{ site.avatar }}" alt="Rafael Paez Villanueva">
+    </div>
   </div>
 </section>
 
-<div class="section-title">
-  <h2>Experiencia Profesional</h2>
-</div>
-
-<div class="experience-grid">
-  <article class="card">
-    <h3>Software Developer</h3>
-    <span class="card-meta">District Software S.A. | 2018 - Presente</span>
-    <p>Evolución desde Programador Web Junior hasta Desarrollador Senior. Mantenimiento y soporte del procesador de pagos <strong>Cocoa</strong> (cocoapayments.com) utilizando Laravel, Solr y JQuery.</p>
-  </article>
-
-  <article class="card">
-    <h3>Consultor Técnico</h3>
-    <span class="card-meta">CANTV | 2018</span>
-    <p>Coordinación del ciclo de ingresos, mantenimiento de sistemas públicos como <strong>pac.com.ve</strong> y administración de servidores CentOS.</p>
-  </article>
-</div>
-
-<div class="section-title">
-  <h2>Habilidades Core</h2>
-</div>
-
-<div class="experience-grid">
-  <div class="card" style="text-align: center;">
-    <h3 style="color: #26C6DA;">Backend</h3>
-    <p>PHP (Laravel, SlimPhp, Lumen), Python (FastAPI), Java</p>
+<section id="about" class="about">
+  <div class="container text-center">
+    <div class="section-header reveal">
+      <h2>Sobre mí</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="glass-card reveal">
+      <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">Soy un apasionado de la tecnología radicado en
+        Venezuela. Mi enfoque principal es el desarrollo robusto de backend y experiencias móviles fluidas. He liderado
+        el mantenimiento de sistemas críticos y procesadores de pago, siempre buscando la excelencia técnica y el
+        impacto en el negocio.</p>
+    </div>
   </div>
-  <div class="card" style="text-align: center;">
-    <h3 style="color: #6C63FF;">Frontend & Mobile</h3>
-    <p>JavaScript (Vue.js), Mobile (Flutter)</p>
-  </div>
-  <div class="card" style="text-align: center;">
-    <h3 style="color: #FF7043;">Herramientas</h3>
-    <p>SQL (MySQL, PostgreSQL), Solr, Git Flow, Scrum, MVC</p>
-  </div>
-</div>
+</section>
 
-{% if site.posts.size > 0 %}
-<div class="section-title">
-  <h2>Blog Reciente</h2>
-</div>
+<section id="experience" class="experience">
+  <div class="container text-center">
+    <div class="section-header reveal">
+      <h2>Trayectoria Profesional</h2>
+      <div class="section-line"></div>
+    </div>
 
-<div class="posts">
-  {% for post in site.posts limit:3 %}
-    <article class="post">
-      <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
-      <div class="entry">
-        {{ post.excerpt }}
+    <div class="exp-grid">
+      <article class="glass-card reveal">
+        <div class="exp-header">
+          <div class="exp-title">
+            <h3>District Software S.A.</h3>
+            <p>Desarrollador de Software / Full Stack</p>
+          </div>
+          <span class="exp-date">2018 - Presente</span>
+        </div>
+        <p>Responsable del mantenimiento y soporte del innovador procesador de pagos <strong>Cocoa</strong>. Experto en
+          optimización con Laravel, Solr y JQuery, garantizando transacciones seguras y eficientes para miles de
+          usuarios.</p>
+      </article>
+
+      <article class="glass-card reveal">
+        <div class="exp-header">
+          <div class="exp-title">
+            <h3>CANTV</h3>
+            <p>Consultor de Coordinación de Ciclo de Ingresos</p>
+          </div>
+          <span class="exp-date">2018</span>
+        </div>
+        <p>Gestión y mantenimiento de portales públicos de alto tráfico como <strong>pac.com.ve</strong>. Especialista
+          en administración de entornos críticos sobre CentOS Linux.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="skills">
+  <div class="container text-center">
+    <div class="section-header reveal">
+      <h2>Habilidades Core</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-box reveal">
+        <i class="fas fa-server"></i>
+        <h3>Backend</h3>
+        <p>PHP (Laravel, SlimPhp), Python (FastAPI), Java. Maestría en arquitectura SQL.</p>
       </div>
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Leer más</a>
-    </article>
-  {% endfor %}
-</div>
-{% endif %}
+      <div class="skill-box reveal">
+        <i class="fas fa-mobile-alt"></i>
+        <h3>Mobile & UI</h3>
+        <p>Desarrollo Cross-platform con Flutter. Frontend moderno con Vue.js y JavaScript.</p>
+      </div>
+      <div class="skill-box reveal">
+        <i class="fas fa-tools"></i>
+        <h3>Tools</h3>
+        <p>Git Flow, Metodologías Scrum, Solr Search, y Administración de Servidores Linux.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container text-center reveal">
+    <div class="glass-card"
+      style="background: linear-gradient(135deg, var(--primary), var(--secondary)); border: none;">
+      <h2 style="margin-bottom: 2rem;">¿Listo para llevar tu proyecto al siguiente nivel?</h2>
+      <a href="mailto:rafael.paez.v@gmail.com" class="btn btn-primary"
+        style="background: white; color: var(--primary); border: none;">Hablemos ahora</a>
+    </div>
+  </div>
+</section>
