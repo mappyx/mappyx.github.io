@@ -17,9 +17,22 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="{{ site.baseurl }}/style.css">
+
+  <style>
+    /* Immediate critical styles to prevent flash of unstyled content */
+    body.loading {
+      background-color: #f4f6f8;
+      opacity: 0;
+    }
+
+    body.loaded {
+      opacity: 1;
+      transition: opacity 0.4s ease-in;
+    }
+  </style>
 </head>
 
-<body>
+<body class="loading">
   <header class="navbar">
     <div class="nav-container">
       <a href="{{ site.baseurl }}/" class="logo">
@@ -66,6 +79,9 @@
   <!-- Reveal Script -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.remove('loading');
+      document.body.classList.add('loaded');
+
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
