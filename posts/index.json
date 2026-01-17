@@ -4,5 +4,11 @@
     "title": "Getting Started with Pip-UI",
     "date": "2026-01-17",
     "description": "A complete guide to building your first landing page with the pip-ui retro framework."
+  },
+  {
+    "slug": "micro-tutorial",
+    "title": "Building Modern APIs with MicroJet",
+    "date": "2026-01-17",
+    "description": "Learn how to build fast, secure, and modular APIs using the MicroJet framework and PHP 8."
   }
 ]
