@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Rafael Paez - Web Developer Portfolio. Showcasing projects, skills, and blog posts.">
+    <meta name="author" content="Rafael Paez">
+    <title>Rafael Paez - Web Developer</title>
+
+    <!-- Pip-UI Framework -->
+    <link rel="stylesheet" href="css/pipboy.css">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="pip-body pip-crt">
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">RAFAEL.PAEZ</div>
+            <button class="mobile-menu-toggle">MENU</button>
+            <ul class="nav-links">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#projects">PROJECTS</a></li>
+                <li><a href="#skills">SKILLS</a></li>
+                <li><a href="#blog">BLOG</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h1>RAFAEL PAEZ</h1>
+            <p class="subtitle" id="hero-subtitle">WEB DEVELOPER | PROGRAMMER</p>
+            <p class="intro pip-text">
+                Building robust and scalable web applications with modern technologies.
+                Passionate about clean code, innovative solutions, and continuous learning.
+            </p>
+            <div style="margin-top: 30px;">
+                <a href="#projects" class="pip-btn primary" style="margin-right: 10px;">VIEW PROJECTS</a>
+                <a href="#contact" class="pip-btn">GET IN TOUCH</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="pip-container">
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <h2 class="section-title">ABOUT ME</h2>
+            <div class="pip-row">
+                <div class="pip-col-12 pip-col-md-6">
+                    <section class="pip-panel">
+                        <div class="pip-panel-header">Professional Background</div>
+                        <p class="pip-text">
+                            I'm a web developer with a passion for creating efficient, scalable, and user-friendly
+                            applications.
+                            My expertise spans across full-stack development, with a focus on modern web technologies
+                            and best practices.
+                        </p>
+                        <p class="pip-text">
+                            I believe in writing clean, maintainable code and staying up-to-date with the latest
+                            industry trends.
+                            My approach combines technical excellence with creative problem-solving to deliver
+                            exceptional results.
+                        </p>
+                    </section>
+                </div>
+                <div class="pip-col-12 pip-col-md-6">
+                    <section class="pip-panel">
+                        <div class="pip-panel-header">What I Do</div>
+                        <ul class="skill-list">
+                            <li>Full-Stack Web Development</li>
+                            <li>API Design & Integration</li>
+                            <li>Database Architecture</li>
+                            <li>Frontend Development</li>
+                            <li>Backend Systems</li>
+                            <li>DevOps & Deployment</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <h2 class="section-title">PROJECTS</h2>
+            <p class="pip-text" style="text-align: center; margin-bottom: 30px;">
+                Here are some of my recent projects from GitHub. Click on any project to view more details.
+            </p>
+            <div id="projects-container">
+                <div class="loading">Loading projects</div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://github.com/mappyx" target="_blank" class="pip-btn">
+                    VIEW ALL ON GITHUB →
+                </a>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <h2 class="section-title">TECHNICAL SKILLS</h2>
+            <div class="skills-grid">
+                <section class="pip-panel skill-category">
+                    <h3>Frontend</h3>
+                    <ul class="skill-list">
+                        <li>HTML5 & CSS3</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>Vue.js</li>
+                        <li>React</li>
+                        <li>Responsive Design</li>
+                        <li>SCSS/SASS</li>
+                    </ul>
+                </section>
+
+                <section class="pip-panel skill-category">
+                    <h3>Backend</h3>
+                    <ul class="skill-list">
+                        <li>Node.js</li>
+                        <li>PHP</li>
+                        <li>Laravel</li>
+                        <li>Python</li>
+                        <li>Go</li>
+                        <li>RESTful APIs</li>
+                    </ul>
+                </section>
+
+                <section class="pip-panel skill-category">
+                    <h3>Database</h3>
+                    <ul class="skill-list">
+                        <li>MySQL</li>
+                        <li>PostgreSQL</li>
+                        <li>MongoDB</li>
+                        <li>Redis</li>
+                        <li>Database Design</li>
+                        <li>Query Optimization</li>
+                    </ul>
+                </section>
+
+                <section class="pip-panel skill-category">
+                    <h3>Tools & DevOps</h3>
+                    <ul class="skill-list">
+                        <li>Git & GitHub</li>
+                        <li>Docker</li>
+                        <li>CI/CD</li>
+                        <li>Linux</li>
+                        <li>Nginx</li>
+                        <li>AWS</li>
+                    </ul>
+                </section>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="section">
+            <h2 class="section-title">RECENT POSTS</h2>
+            <p class="pip-text" style="text-align: center; margin-bottom: 30px;">
+                Thoughts, tutorials, and insights on web development and technology.
+            </p>
+            <div id="blog-container">
+                <div class="loading">Loading posts</div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2 class="section-title">GET IN TOUCH</h2>
+            <p class="pip-text" style="text-align: center; margin-bottom: 30px;">
+                Interested in working together? Feel free to reach out!
+            </p>
+            <div class="contact-links">
+                <a href="https://github.com/mappyx" target="_blank" class="contact-link">
+                    GITHUB
+                </a>
+                <a href="mailto:contact@example.com" class="contact-link">
+                    EMAIL
+                </a>
+                <a href="https://linkedin.com/in/rafael-paez-villanueva" target="_blank" class="contact-link">
+                    LINKEDIN
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer
+            style="margin-top: 60px; border-top: 2px solid rgba(12, 131, 61, 0.3); padding: 30px 0; text-align: center;">
+            <p class="pip-text subtle">© 2026 Rafael Paez | Built with Pip-UI Framework</p>
+            <p class="pip-text subtle" style="margin-top: 10px;">
+                <a href="https://github.com/mappyx/mappyx.github.io" target="_blank"
+                    style="color: #0c833d; text-decoration: none;">
+                    View Source Code
+                </a>
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/markdown-parser.js"></script>
+    <script src="js/blog.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Initialize Blog -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const blog = new BlogSystem();
+            blog.renderRecentPosts('blog-container', 3);
+        });
+    </script>
+
+</body>
+
+</html>

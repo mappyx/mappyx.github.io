@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rafael Paez - Blog. Articles about web development, programming, and technology.">
+    <meta name="author" content="Rafael Paez">
+    <title>Blog - Rafael Paez</title>
+
+    <!-- Pip-UI Framework -->
+    <link rel="stylesheet" href="css/pipboy.css">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="pip-body pip-crt">
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">RAFAEL.PAEZ</div>
+            <button class="mobile-menu-toggle">MENU</button>
+            <ul class="nav-links">
+                <li><a href="index.html#home">HOME</a></li>
+                <li><a href="index.html#about">ABOUT</a></li>
+                <li><a href="index.html#projects">PROJECTS</a></li>
+                <li><a href="index.html#skills">SKILLS</a></li>
+                <li><a href="blog.html">BLOG</a></li>
+                <li><a href="index.html#contact">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="pip-container" style="margin-top: 100px;">
+
+        <!-- Page Header -->
+        <header style="text-align: center; margin-bottom: 50px;">
+            <h1 class="pip-text highlight" style="font-size: 2.5rem; margin-bottom: 10px;">BLOG</h1>
+            <p class="pip-text">Thoughts, tutorials, and insights on web development</p>
+        </header>
+
+        <!-- Blog Posts -->
+        <section class="pip-panel">
+            <div class="pip-panel-header">All Posts</div>
+            <div id="blog-posts-container">
+                <div class="loading">Loading posts</div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer
+            style="margin-top: 60px; border-top: 2px solid rgba(12, 131, 61, 0.3); padding: 30px 0; text-align: center;">
+            <p class="pip-text subtle">© 2026 Rafael Paez | Built with Pip-UI Framework</p>
+            <p class="pip-text subtle" style="margin-top: 10px;">
+                <a href="index.html" style="color: #0c833d; text-decoration: none;">← Back to Home</a>
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/markdown-parser.js"></script>
+    <script src="js/blog.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Initialize Blog -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const blog = new BlogSystem();
+            blog.renderPostList('blog-posts-container');
+        });
+    </script>
+
+</body>
+
+</html>
