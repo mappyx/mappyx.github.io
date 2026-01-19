@@ -50,7 +50,7 @@ class BlogSystem {
         const container = document.getElementById(containerId);
         if (!container) return;
 
-        container.innerHTML = '<div class="loading">Loading posts</div>';
+        container.innerHTML = '<div class="pip-loader block">Connecting to Terminal...</div>';
 
         const posts = await this.loadPostsIndex();
 
@@ -88,6 +88,8 @@ class BlogSystem {
     async renderRecentPosts(containerId, limit = 3) {
         const container = document.getElementById(containerId);
         if (!container) return;
+
+        container.innerHTML = '<div class="pip-loader block">Fetching Logs</div>';
 
         const posts = await this.loadPostsIndex();
 
@@ -129,7 +131,7 @@ class BlogSystem {
         const container = document.getElementById(containerId);
         if (!container) return;
 
-        container.innerHTML = '<div class="loading">Loading post</div>';
+        container.innerHTML = '<div class="pip-loader block">Decrypting File</div>';
 
         const postData = await this.loadPost(slug);
 

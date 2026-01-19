@@ -98,7 +98,7 @@ class GitHubProjects {
         const container = document.getElementById(containerId);
         if (!container) return;
 
-        container.innerHTML = '<div class="loading">Loading projects</div>';
+        container.innerHTML = '<div class="pip-loader block">Accessing Mainframe...</div>';
 
         const repos = await this.fetchRepos(limit);
 

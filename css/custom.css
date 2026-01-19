@@ -398,34 +398,6 @@
     }
 }
 
-/* Loading Animation */
-.loading {
-    text-align: center;
-    padding: 40px;
-    color: #0c833d;
-}
-
-.loading:after {
-    content: '...';
-    animation: dots 1.5s steps(4, end) infinite;
-}
-
-@keyframes dots {
-
-    0%,
-    20% {
-        content: '.';
-    }
-
-    40% {
-        content: '..';
-    }
-
-    60%,
-    100% {
-        content: '...';
-    }
-}
 
 /* Scroll Offset for Fixed Nav */
 html {
