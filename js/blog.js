@@ -1,18 +1,9 @@
-/**
- * Blog System
- * Handles loading and displaying blog posts
- */
-
 class BlogSystem {
     constructor() {
         this.posts = [];
         this.parser = new MarkdownParser();
     }
 
-    /**
-     * Load posts index
-     * @returns {Promise<Array>} - Array of post metadata
-     */
     async loadPostsIndex() {
         try {
             const response = await fetch('posts/index.json');
@@ -25,11 +16,6 @@ class BlogSystem {
         }
     }
 
-    /**
-     * Load a single post
-     * @param {string} slug - Post slug/filename
-     * @returns {Promise<object>} - Parsed post data
-     */
     async loadPost(slug) {
         try {
             const response = await fetch(`posts/${slug}.md`);
@@ -42,36 +28,45 @@ class BlogSystem {
         }
     }
 
-    /**
-     * Render post list for blog page
-     * @param {string} containerId - Container element ID
-     */
     async renderPostList(containerId) {
         const container = document.getElementById(containerId);
         if (!container) return;
 
-        container.innerHTML = '<div class="pip-loader block">Connecting to Terminal...</div>';
+        container.innerHTML = `
+            <div class="bp-loader">
+                <span class="material-symbols-outlined bp-spin">sync</span>
+                Retrieving article index...
+            </div>
+        `;
 
         const posts = await this.loadPostsIndex();
 
         if (posts.length === 0) {
-            container.innerHTML = '<p class="pip-text">No posts found.</p>';
+            container.innerHTML = '<p style="color: var(--bp-white-muted); text-align: center;">No documents indexed.</p>';
             return;
         }
 
-        // Sort by date (newest first)
         posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-        let html = '<div class="blog-preview">';
+        let html = '<div class="bp-grid-2">';
         posts.forEach(post => {
             html += `
-                <article class="blog-post-card">
-                    <h3><a href="post.html?slug=${post.slug}" style="color: inherit; text-decoration: none;">${post.title}</a></h3>
-                    <div class="post-meta">
-                        <span class="pip-badge">${this.formatDate(post.date)}</span>
+                <article class="bp-card">
+                    <div class="bp-card-header">
+                        <span class="material-symbols-outlined">description</span>
+                        <a href="post.html?slug=${post.slug}" style="color: inherit; text-decoration: none;">${post.title}</a>
                     </div>
-                    <p>${post.description}</p>
-                    <a href="post.html?slug=${post.slug}" class="pip-btn primary">Read More</a>
+                    <div style="margin-bottom: 12px;">
+                        <span class="bp-tag">
+                            <span class="material-symbols-outlined" style="font-size: 14px;">calendar_today</span>
+                            ${this.formatDate(post.date)}
+                        </span>
+                    </div>
+                    <p style="color: var(--bp-white-muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 20px;">${post.description}</p>
+                    <a href="post.html?slug=${post.slug}" class="bp-btn primary" style="padding: 8px 16px;">
+                        <span class="material-symbols-outlined">read_more</span>
+                        Read Specification
+                    </a>
                 </article>
             `;
         });
@@ -80,115 +75,84 @@ class BlogSystem {
         container.innerHTML = html;
     }
 
-    /**
-     * Render recent posts for home page
-     * @param {string} containerId - Container element ID
-     * @param {number} limit - Number of posts to show
-     */
-    async renderRecentPosts(containerId, limit = 3) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-
-        container.innerHTML = '<div class="pip-loader block">Fetching Logs</div>';
-
-        const posts = await this.loadPostsIndex();
-
-        if (posts.length === 0) {
-            container.innerHTML = '<p class="pip-text">No posts yet. Check back soon!</p>';
-            return;
-        }
-
-        // Sort by date and limit
-        const recentPosts = posts
-            .sort((a, b) => new Date(b.date) - new Date(a.date))
-            .slice(0, limit);
-
-        let html = '<div class="blog-preview">';
-        recentPosts.forEach(post => {
-            html += `
-                <article class="blog-post-card">
-                    <h3><a href="post.html?slug=${post.slug}" style="color: inherit; text-decoration: none;">${post.title}</a></h3>
-                    <div class="post-meta">
-                        <span class="pip-badge">${this.formatDate(post.date)}</span>
-                    </div>
-                    <p>${post.description}</p>
-                    <a href="post.html?slug=${post.slug}" class="pip-btn primary">Read More</a>
-                </article>
-            `;
-        });
-        html += '</div>';
-        html += '<div style="text-align: center; margin-top: 30px;"><a href="blog.html" class="pip-btn">View All Posts</a></div>';
-
-        container.innerHTML = html;
-    }
-
-    /**
-     * Render single post
-     * @param {string} containerId - Container element ID
-     * @param {string} slug - Post slug
-     */
     async renderPost(containerId, slug) {
         const container = document.getElementById(containerId);
         if (!container) return;
 
-        container.innerHTML = '<div class="pip-loader block">Decrypting File</div>';
+        container.innerHTML = `
+            <div class="bp-loader">
+                <span class="material-symbols-outlined bp-spin">sync</span>
+                Parsing document specifications...
+            </div>
+        `;
 
         const postData = await this.loadPost(slug);
 
         if (!postData) {
-            container.innerHTML = '<p class="pip-text error">Post not found.</p>';
+            container.innerHTML = `
+                <div class="bp-card">
+                    <div class="bp-card-header">
+                        <span class="material-symbols-outlined">error</span>
+                        Document Not Found
+                    </div>
+                    <p style="color: var(--bp-white-muted);">The requested document could not be retrieved.</p>
+                </div>
+            `;
             return;
         }
 
         const { frontmatter, html } = postData;
 
-        let postHTML = '<article class="pip-panel">';
-        postHTML += `<div class="pip-panel-header">${frontmatter.title || 'Untitled'}</div>`;
+        let postHTML = '<article class="bp-card" style="padding: 32px;">';
+        postHTML += `
+            <div class="bp-card-header" style="font-size: 1.3rem; margin-bottom: 16px;">
+                <span class="material-symbols-outlined" style="font-size: 22px;">article</span>
+                ${frontmatter.title || 'Untitled Document'}
+            </div>
+        `;
 
         if (frontmatter.date) {
-            postHTML += `<div class="post-meta pip-text subtle" style="margin-bottom: 20px;">
-                <span class="pip-badge">${this.formatDate(frontmatter.date)}</span>
-            </div>`;
+            postHTML += `
+                <div style="margin-bottom: 24px;">
+                    <span class="bp-tag highlight">
+                        <span class="material-symbols-outlined" style="font-size: 14px;">calendar_today</span>
+                        ${this.formatDate(frontmatter.date)}
+                    </span>
+                </div>
+            `;
         }
 
         postHTML += `<div class="markdown-content">${html}</div>`;
         postHTML += '</article>';
 
-        postHTML += '<div style="margin-top: 30px; text-align: center;">';
-        postHTML += '<a href="blog.html" class="pip-btn">← Back to Blog</a>';
-        postHTML += '</div>';
+        postHTML += `
+            <div style="margin-top: 36px; text-align: center;">
+                <a href="blog.html" class="bp-btn">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    Return to Index
+                </a>
+            </div>
+        `;
 
         container.innerHTML = postHTML;
 
-        // Update page title
         if (frontmatter.title) {
             document.title = `${frontmatter.title} - Rafael Paez`;
         }
     }
 
-    /**
-     * Format date string
-     * @param {string} dateStr - Date string
-     * @returns {string} - Formatted date
-     */
     formatDate(dateStr) {
         const date = new Date(dateStr);
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const options = { year: 'numeric', month: 'short', day: 'numeric' };
         return date.toLocaleDateString('en-US', options);
     }
 
-    /**
-     * Get URL parameter
-     * @param {string} name - Parameter name
-     * @returns {string|null} - Parameter value
-     */
     static getURLParam(name) {
         const params = new URLSearchParams(window.location.search);
         return params.get(name);
     }
 }
 
-// Initialize blog system when DOM is ready
 if (typeof window !== 'undefined') {
     window.BlogSystem = BlogSystem;
 }

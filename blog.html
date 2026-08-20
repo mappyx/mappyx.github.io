@@ -4,69 +4,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Rafael Paez - Blog. Articles about web development, programming, and technology.">
+    <meta name="description" content="Rafael Paez - Technical Blog. Articles on architecture, programming, and web systems.">
     <meta name="author" content="Rafael Paez">
-    <title>Blog - Rafael Paez</title>
+    <title>Technical Blog - Rafael Paez</title>
 
-    <!-- Pip-UI Framework -->
-    <link rel="stylesheet" href="css/pipboy.css">
-    <!-- Custom Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
     <link rel="stylesheet" href="css/custom.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
-<body class="pip-body pip-crt">
+<body class="blueprint-theme">
 
-    <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <div class="nav-logo">RAFAEL.PAEZ</div>
-            <button class="mobile-menu-toggle">MENU</button>
-            <ul class="nav-links">
-                <li><a href="index.html#home">HOME</a></li>
-                <li><a href="index.html#about">ABOUT</a></li>
-                <li><a href="index.html#projects">PROJECTS</a></li>
-                <li><a href="index.html#skills">SKILLS</a></li>
-                <li><a href="blog.html">BLOG</a></li>
-                <li><a href="index.html#contact">CONTACT</a></li>
+    <div id="blueprint-canvas-container"></div>
+
+    <nav class="bp-nav">
+        <div class="bp-nav-container">
+            <a href="index.html#home" class="bp-nav-logo">
+                <span class="material-symbols-outlined">architecture</span>
+                RAFAEL.PAEZ
+            </a>
+            <button class="bp-mobile-toggle" aria-label="Toggle Navigation">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+            <ul class="bp-nav-links">
+                <li><a href="index.html#home"><span class="material-symbols-outlined">home</span>HOME</a></li>
+                <li><a href="index.html#about"><span class="material-symbols-outlined">badge</span>PROFILE</a></li>
+                <li><a href="index.html#projects"><span class="material-symbols-outlined">terminal</span>PROJECTS</a></li>
+                <li><a href="index.html#skills"><span class="material-symbols-outlined">code</span>SKILLS</a></li>
+                <li><a href="blog.html" class="active"><span class="material-symbols-outlined">article</span>BLOG</a></li>
+                <li><a href="index.html#contact"><span class="material-symbols-outlined">mail</span>CONTACT</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="pip-container" style="margin-top: 100px;">
+    <div class="bp-container" style="padding-top: 100px;">
 
-        <!-- Page Header -->
-        <header style="text-align: center; margin-bottom: 50px;">
-            <h1 class="pip-text highlight" style="font-size: 2.5rem; margin-bottom: 10px;">BLOG</h1>
-            <p class="pip-text">Thoughts, tutorials, and insights on web development</p>
+        <header class="bp-section-header" style="margin-top: 40px;">
+            <div class="bp-section-tag">
+                <span class="material-symbols-outlined">auto_stories</span>
+                DOCUMENTATION & WRITING
+            </div>
+            <h1 class="bp-section-title">Technical Articles</h1>
+            <p class="bp-section-desc">Architectural case studies, engineering notes, and tutorials</p>
         </header>
 
-        <!-- Blog Posts -->
-        <section class="pip-panel">
-            <div class="pip-panel-header">All Posts</div>
+        <section class="bp-card" style="margin-top: 30px;">
+            <div class="bp-card-header">
+                <span class="material-symbols-outlined">list_alt</span>
+                Published Documents
+            </div>
             <div id="blog-posts-container">
-                <div class="loading">Loading posts</div>
+                <div class="bp-loader">
+                    <span class="material-symbols-outlined bp-spin">sync</span>
+                    Loading article list...
+                </div>
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer
-            style="margin-top: 60px; border-top: 2px solid rgba(12, 131, 61, 0.3); padding: 30px 0; text-align: center;">
-            <p class="pip-text subtle">© 2026 Rafael Paez | Built with Pip-UI Framework</p>
-            <p class="pip-text subtle" style="margin-top: 10px;">
-                <a href="index.html" style="color: #0c833d; text-decoration: none;">← Back to Home</a>
+        <footer class="bp-footer">
+            <p>© 2026 Rafael Paez // Architectural Blueprint Theme</p>
+            <p style="margin-top: 8px;">
+                <a href="index.html">
+                    <span class="material-symbols-outlined" style="font-size: 16px;">arrow_back</span>
+                    Return to Main Portfolio
+                </a>
             </p>
         </footer>
 
     </div>
 
-    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="js/markdown-parser.js"></script>
     <script src="js/blog.js"></script>
     <script src="js/main.js"></script>
 
-    <!-- Initialize Blog -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const blog = new BlogSystem();
