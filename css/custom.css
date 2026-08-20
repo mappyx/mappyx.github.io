@@ -251,10 +251,14 @@ body.blueprint-theme {
 
 .bp-hero .intro {
     font-size: 0.95rem;
-    color: #222222;
+    color: #111111;
     max-width: 680px;
     margin: 0 auto 36px;
     line-height: 1.8;
+    background: #ffffff;
+    border: 1px solid var(--bp-border-color);
+    padding: 16px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 .bp-btn-group {
