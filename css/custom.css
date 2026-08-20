@@ -184,6 +184,35 @@ body.blueprint-theme {
     width: 100%;
     text-align: center;
     position: relative;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid var(--bp-border-color);
+    padding: 44px 36px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+}
+
+.bp-hero-content::before,
+.bp-hero-content::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+}
+
+.bp-hero-content::before {
+    top: -1px;
+    left: -1px;
+    border-top: 2px solid #000000;
+    border-left: 2px solid #000000;
+}
+
+.bp-hero-content::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 2px solid #000000;
+    border-right: 2px solid #000000;
 }
 
 .bp-blueprint-tag {
@@ -195,24 +224,24 @@ body.blueprint-theme {
     font-size: 0.75rem;
     color: var(--bp-text-dark);
     margin-bottom: 24px;
-    background: rgba(255, 255, 255, 0.7);
+    background: #ffffff;
     letter-spacing: 1.5px;
 }
 
 .bp-hero h1 {
     font-size: clamp(2.2rem, 5vw, 3.8rem);
-    color: var(--bp-text-heading);
+    color: #000000;
     font-weight: 700;
-    letter-spacing: 3px;
-    margin-bottom: 12px;
+    letter-spacing: 4px;
+    margin-bottom: 14px;
     text-transform: uppercase;
 }
 
 .bp-hero .subtitle {
-    font-size: 1rem;
-    color: var(--bp-text-muted);
+    font-size: 0.95rem;
+    color: #333333;
     margin-bottom: 24px;
-    font-weight: 400;
+    font-weight: 600;
     letter-spacing: 2px;
     display: flex;
     align-items: center;
@@ -222,8 +251,8 @@ body.blueprint-theme {
 
 .bp-hero .intro {
     font-size: 0.95rem;
-    color: var(--bp-text-dark);
-    max-width: 620px;
+    color: #222222;
+    max-width: 680px;
     margin: 0 auto 36px;
     line-height: 1.8;
 }
