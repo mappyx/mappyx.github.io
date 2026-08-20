@@ -61,17 +61,29 @@ class GitHubProjects {
     async fetchRepos(limit = 6) {
         try {
             const response = await fetch(`${this.apiUrl}?sort=updated&per_page=${limit}`);
-            if (!response.ok) throw new Error('Failed to fetch repositories');
-            const repos = await response.json();
-
-            return repos
-                .filter(repo => !repo.fork)
-                .sort((a, b) => b.stargazers_count - a.stargazers_count)
-                .slice(0, limit);
+            if (response.ok) {
+                const repos = await response.json();
+                if (Array.isArray(repos) && repos.length > 0) {
+                    return repos
+                        .filter(repo => !repo.fork)
+                        .sort((a, b) => b.stargazers_count - a.stargazers_count)
+                        .slice(0, limit);
+                }
+            }
         } catch (error) {
-            console.error('Error fetching GitHub repos:', error);
-            return [];
+            console.error('GitHub API error:', error);
         }
+
+        try {
+            const fallbackRes = await fetch('projects.json');
+            if (fallbackRes.ok) {
+                return await fallbackRes.json();
+            }
+        } catch (fallbackErr) {
+            console.error('Fallback projects error:', fallbackErr);
+        }
+
+        return [];
     }
 
     async renderProjects(containerId, limit = 6) {
@@ -105,8 +117,8 @@ class GitHubProjects {
                     </div>
                     <div class="bp-meta-tags">
                         ${repo.language ? `<span class="bp-tag highlight"><span class="material-symbols-outlined" style="font-size: 14px;">code</span>${repo.language}</span>` : ''}
-                        <span class="bp-tag"><span class="material-symbols-outlined" style="font-size: 14px;">star</span>${repo.stargazers_count}</span>
-                        <span class="bp-tag"><span class="material-symbols-outlined" style="font-size: 14px;">fork_right</span>${repo.forks_count}</span>
+                        <span class="bp-tag"><span class="material-symbols-outlined" style="font-size: 14px;">star</span>${repo.stargazers_count ?? 0}</span>
+                        <span class="bp-tag"><span class="material-symbols-outlined" style="font-size: 14px;">fork_right</span>${repo.forks_count ?? 0}</span>
                     </div>
                 </div>
             `;
@@ -155,26 +167,27 @@ function initBunkerVectorScene() {
     container.appendChild(renderer.domElement);
 
     const bunkerGroup = new THREE.Group();
+    bunkerGroup.position.x = -32;
     scene.add(bunkerGroup);
 
     const structuralLineMat = new THREE.LineBasicMaterial({
         color: 0x222222,
         transparent: true,
-        opacity: 0.38,
+        opacity: 0.25,
         linewidth: 1
     });
 
     const mediumGrayLineMat = new THREE.LineBasicMaterial({
         color: 0x555555,
         transparent: true,
-        opacity: 0.22,
+        opacity: 0.15,
         linewidth: 1
     });
 
     const lightGrayLineMat = new THREE.LineBasicMaterial({
         color: 0x888888,
         transparent: true,
-        opacity: 0.12,
+        opacity: 0.08,
         linewidth: 1
     });
 
@@ -197,7 +210,7 @@ function initBunkerVectorScene() {
     ringWire.position.y = -11;
     bunkerGroup.add(ringWire);
 
-    const bunkerFloorGeo = new THREE.PlaneGeometry(220, 220, 22, 22);
+    const bunkerFloorGeo = new THREE.PlaneGeometry(240, 240, 24, 24);
     const bunkerFloorWire = new THREE.LineSegments(new THREE.WireframeGeometry(bunkerFloorGeo), lightGrayLineMat);
     bunkerFloorWire.rotation.x = -Math.PI / 2;
     bunkerFloorWire.position.y = -22;
@@ -236,9 +249,9 @@ function initBunkerVectorScene() {
         targetX += (mouseX - targetX) * 0.03;
         targetY += (mouseY - targetY) * 0.03;
 
-        bunkerGroup.rotation.y += 0.0012;
-        bunkerGroup.rotation.y = (bunkerGroup.rotation.y + targetX * 0.005);
-        bunkerGroup.rotation.x = 0.25 - targetY * 0.15;
+        bunkerGroup.rotation.y += 0.001;
+        bunkerGroup.rotation.y = (bunkerGroup.rotation.y + targetX * 0.004);
+        bunkerGroup.rotation.x = 0.25 - targetY * 0.12;
 
         renderer.render(scene, camera);
     }

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "pip-ui",
+    "description": "Retro terminal and fallout-inspired UI framework for web applications.",
+    "language": "CSS / JavaScript",
+    "stargazers_count": 5,
+    "forks_count": 1,
+    "html_url": "https://github.com/mappyx/pip-ui"
+  },
+  {
+    "name": "microjet-api",
+    "description": "Fast, modular, and lightweight REST API framework built with modern PHP 8.",
+    "language": "PHP",
+    "stargazers_count": 3,
+    "forks_count": 0,
+    "html_url": "https://github.com/mappyx/microjet-api"
+  },
+  {
+    "name": "architect-blueprint-theme",
+    "description": "Minimalist architectural blueprint portfolio theme built with Three.js and Google Material Icons.",
+    "language": "JavaScript",
+    "stargazers_count": 2,
+    "forks_count": 0,
+    "html_url": "https://github.com/mappyx/mappyx.github.io"
+  }
+]
