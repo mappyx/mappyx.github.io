@@ -88,7 +88,7 @@ class GitHubProjects {
         const repos = await this.fetchRepos(limit);
 
         if (repos.length === 0) {
-            container.innerHTML = '<p style="color: var(--bp-white-muted); text-align: center;">No projects available.</p>';
+            container.innerHTML = '<p style="color: var(--bp-text-muted); text-align: center;">No projects available.</p>';
             return;
         }
 
@@ -140,58 +140,79 @@ function initScrollAnimations() {
     });
 }
 
-function initBlueprintThreeScene() {
+function initBunkerVectorScene() {
     const container = document.getElementById('blueprint-canvas-container');
     if (!container || typeof THREE === 'undefined') return;
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 85;
+    const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 15, 95);
+    camera.lookAt(0, 0, 0);
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    const group = new THREE.Group();
-    scene.add(group);
+    const bunkerGroup = new THREE.Group();
+    scene.add(bunkerGroup);
 
-    const wireframeMat = new THREE.LineBasicMaterial({
-        color: 0xffffff,
+    const structuralLineMat = new THREE.LineBasicMaterial({
+        color: 0x222222,
         transparent: true,
-        opacity: 0.18,
+        opacity: 0.38,
         linewidth: 1
     });
 
-    const boldWireframeMat = new THREE.LineBasicMaterial({
-        color: 0xffffff,
+    const mediumGrayLineMat = new THREE.LineBasicMaterial({
+        color: 0x555555,
         transparent: true,
-        opacity: 0.35,
+        opacity: 0.22,
         linewidth: 1
     });
 
-    const boxGeo = new THREE.BoxGeometry(32, 32, 32);
-    const boxWire = new THREE.LineSegments(new THREE.EdgesGeometry(boxGeo), boldWireframeMat);
-    group.add(boxWire);
-
-    const icosaGeo = new THREE.IcosahedronGeometry(22, 1);
-    const icosaWire = new THREE.LineSegments(new THREE.WireframeGeometry(icosaGeo), wireframeMat);
-    group.add(icosaWire);
-
-    const torusGeo = new THREE.TorusGeometry(38, 0.4, 8, 48);
-    const torusWire = new THREE.LineSegments(new THREE.WireframeGeometry(torusGeo), wireframeMat);
-    torusWire.rotation.x = Math.PI / 3;
-    group.add(torusWire);
-
-    const planeGridGeo = new THREE.PlaneGeometry(120, 120, 12, 12);
-    const planeGridWire = new THREE.LineSegments(new THREE.WireframeGeometry(planeGridGeo), new THREE.LineBasicMaterial({
-        color: 0xffffff,
+    const lightGrayLineMat = new THREE.LineBasicMaterial({
+        color: 0x888888,
         transparent: true,
-        opacity: 0.08
-    }));
-    planeGridWire.rotation.x = -Math.PI / 2.5;
-    planeGridWire.position.y = -35;
-    group.add(planeGridWire);
+        opacity: 0.12,
+        linewidth: 1
+    });
+
+    const bunkerOuterGeo = new THREE.CylinderGeometry(38, 48, 22, 6, 3, false);
+    const bunkerOuterWire = new THREE.LineSegments(new THREE.WireframeGeometry(bunkerOuterGeo), structuralLineMat);
+    bunkerGroup.add(bunkerOuterWire);
+
+    const bunkerInnerGeo = new THREE.CylinderGeometry(24, 32, 28, 6, 2, false);
+    const bunkerInnerWire = new THREE.LineSegments(new THREE.WireframeGeometry(bunkerInnerGeo), mediumGrayLineMat);
+    bunkerGroup.add(bunkerInnerWire);
+
+    const domeGeo = new THREE.SphereGeometry(26, 12, 8, 0, Math.PI * 2, 0, Math.PI / 2);
+    const domeWire = new THREE.LineSegments(new THREE.WireframeGeometry(domeGeo), structuralLineMat);
+    domeWire.position.y = 11;
+    bunkerGroup.add(domeWire);
+
+    const ringGeo = new THREE.RingGeometry(48, 68, 6, 4);
+    const ringWire = new THREE.LineSegments(new THREE.WireframeGeometry(ringGeo), lightGrayLineMat);
+    ringWire.rotation.x = Math.PI / 2;
+    ringWire.position.y = -11;
+    bunkerGroup.add(ringWire);
+
+    const bunkerFloorGeo = new THREE.PlaneGeometry(220, 220, 22, 22);
+    const bunkerFloorWire = new THREE.LineSegments(new THREE.WireframeGeometry(bunkerFloorGeo), lightGrayLineMat);
+    bunkerFloorWire.rotation.x = -Math.PI / 2;
+    bunkerFloorWire.position.y = -22;
+    bunkerGroup.add(bunkerFloorWire);
+
+    for (let i = 0; i < 6; i++) {
+        const angle = (i * Math.PI) / 3;
+        const shaftGeo = new THREE.BoxGeometry(6, 12, 24);
+        const shaftWire = new THREE.LineSegments(new THREE.EdgesGeometry(shaftGeo), mediumGrayLineMat);
+        shaftWire.position.x = Math.cos(angle) * 44;
+        shaftWire.position.z = Math.sin(angle) * 44;
+        shaftWire.position.y = -5;
+        shaftWire.rotation.y = -angle;
+        bunkerGroup.add(shaftWire);
+    }
 
     let mouseX = 0;
     let mouseY = 0;
@@ -215,16 +236,9 @@ function initBlueprintThreeScene() {
         targetX += (mouseX - targetX) * 0.03;
         targetY += (mouseY - targetY) * 0.03;
 
-        boxWire.rotation.x += 0.002;
-        boxWire.rotation.y += 0.003;
-
-        icosaWire.rotation.x -= 0.0015;
-        icosaWire.rotation.y -= 0.002;
-
-        torusWire.rotation.z += 0.001;
-
-        group.rotation.y = targetX * 0.4;
-        group.rotation.x = -targetY * 0.3;
+        bunkerGroup.rotation.y += 0.0012;
+        bunkerGroup.rotation.y = (bunkerGroup.rotation.y + targetX * 0.005);
+        bunkerGroup.rotation.x = 0.25 - targetY * 0.15;
 
         renderer.render(scene, camera);
     }
@@ -233,7 +247,7 @@ function initBlueprintThreeScene() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    initBlueprintThreeScene();
+    initBunkerVectorScene();
     initScrollAnimations();
 
     const projectsContainer = document.getElementById('projects-container');
